@@ -1,0 +1,1 @@
+# connect-operator-vs-strimzi
