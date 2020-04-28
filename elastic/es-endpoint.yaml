@@ -1,0 +1,28 @@
+# kind: Endpoints
+# apiVersion: v1
+# metadata:
+#   name: elastic-server
+#   annotations:
+#     description: The service to access ssp xxx es endpoints
+# subsets:
+# - addresses:
+#   - ip: xx.xx.xx.xx
+#   ports:
+#   - name: es
+#     port: 9200
+#     protocol: TCP
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: elastic-server
+#   labels:
+#     name: elastic-server
+#   annotations:
+#     description: The service to access elastic-server
+# spec:
+#   ports:
+#   - name: es
+#     protocol: TCP
+#     port: 9200
+#     targetPort: 9200

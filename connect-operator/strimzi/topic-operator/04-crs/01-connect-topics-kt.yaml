@@ -1,0 +1,35 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: connect-configs-logger
+  labels:
+    strimzi.io/cluster: ephemeral
+spec:
+  partitions: 1
+  replicas: 1
+  config:
+    cleanup.policy: compact
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: connect-offsets-logger
+  labels:
+    strimzi.io/cluster: ephemeral
+spec:
+  partitions: 25
+  replicas: 1
+  config:
+    cleanup.policy: compact
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: connect-status-logger
+  labels:
+    strimzi.io/cluster: ephemeral
+spec:
+  partitions: 5
+  replicas: 1
+  config:
+    cleanup.policy: compact

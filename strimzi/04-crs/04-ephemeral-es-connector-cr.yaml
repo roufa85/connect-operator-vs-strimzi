@@ -1,0 +1,17 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: KafkaConnector
+metadata:
+  name: ephemeral-es-connector
+  labels:
+    strimzi.io/cluster: ephemeral
+spec:
+  class: io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
+  tasksMax: 2
+  config:
+    topics: test-topic
+    key.ignore: true
+    connection.url: http://elastic-svc:9200
+    type.name: index
+    schema.ignore: true
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter.schemas.enable: false

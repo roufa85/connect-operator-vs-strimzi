@@ -1,0 +1,19 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: Kafka
+metadata:
+  name: ephemeral
+spec:
+  kafka:
+    replicas: 3
+    version: 2.3.0 
+    listeners:
+      plain: {}
+      tls: {}
+    storage:
+      type: ephemeral
+    config:
+      auto.create.topics.enable: False
+  zookeeper:
+    replicas: 1
+    storage:
+      type: ephemeral
