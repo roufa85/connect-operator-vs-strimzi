@@ -67,9 +67,9 @@ oc exec -i -c kafka ephemeral-kafka-0 -- /opt/kafka/bin/kafka-console-consumer.s
 #####################################################################################
 #####################################################################################
 
-oc apply -f elastic/es-service-account.yaml
+oc apply -f ../elastic/es-service-account.yaml
 oc adm policy add-scc-to-user privileged -n ${OPENSHIFT_NS} -z elasticsearch
-oc apply -f elastic/elasticsearch-kibana.yaml
+oc apply -f ../elastic/elasticsearch-kibana.yaml
 
 oc rollout status deployment/kibana
 oc port-forward service/kibana 5601 &
@@ -94,7 +94,7 @@ oc apply -f examples/v1alpha1/experiment-ssp.yaml
 #oc logs -f deployment/experiment-ssp
 #oc rollout status deployment/experiment-ssp
 
-echo '{"tasks.max": "10", "key.ignore": "true"}' | oc exec -i -c kafka ephemeral-kafka-0 -- /opt/kafka/bin/kafka-console-producer.sh \
+echo '{"tasks.max": "10", "key.ignore": "false"}' | oc exec -i -c kafka ephemeral-kafka-0 -- /opt/kafka/bin/kafka-console-producer.sh \
                     --broker-list ephemeral-kafka-bootstrap:9092 \
                     --topic test-topic
 
@@ -133,5 +133,5 @@ oc describe  KafkaConnectAutoScaler/example-kafkaconnectautoscaler
 
 oc delete -Rf strimzi/
 oc delete -Rf deploy/
-oc delete -Rf elastic/
+oc delete -Rf ../elastic/
 #oc delete project ${OPENSHIFT_NS}
