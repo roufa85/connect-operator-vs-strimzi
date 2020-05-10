@@ -9,4 +9,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: kubernetes-kafka-connect-operator
-  namespace: test-operator
+  namespace: default

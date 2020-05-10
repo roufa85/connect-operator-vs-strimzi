@@ -22,7 +22,8 @@ spec:
   podSpec:
     containers:
       - name: kafkaconnect
-        image: confluentinc/cp-kafka-connect:5.3.1
+        #image: confluentinc/cp-kafka-connect:5.3.1
+        image: raoufsalem/cp-kafka-connect-es:5.5.0
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8083

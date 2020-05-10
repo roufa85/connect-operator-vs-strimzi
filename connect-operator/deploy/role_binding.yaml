@@ -19,7 +19,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: kubernetes-kafka-connect-operator
-  namespace: test-operator
+  namespace: default
 roleRef:
   kind: Role
   name: extension-apiserver-authentication-reader
